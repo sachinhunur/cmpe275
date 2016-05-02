@@ -18,14 +18,17 @@ body {
 <div class="col-sm-4" style="text-align:center">
 	<br>
 	
-	<form role="form" method="GET" action="getprofilehtml.html">
+	<form role="form" method="POST" action="getprofilehtml">
 	<div class="form-group">
    <table>
     <tr>
         <td>ID: <input class="form-control" type="text" name="id" required></td>
        
     </tr>
-    
+     <tr>
+        <td>Password: <input class="form-control" type="text" name="password" required></td>
+       
+    </tr>
     <tr>
         <td colspan="2">
             <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Get profile as html"/>
