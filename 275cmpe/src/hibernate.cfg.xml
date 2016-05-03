@@ -22,9 +22,9 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
  <!-- Mention here all the model classes along with their package name -->
- 		<mapping class="edu.sjsu.cmpe275.teamproject.model.User"/>
- 		<mapping class="edu.sjsu.cmpe275.teamproject.model.Order_details"/>
- 		<mapping class="edu.sjsu.cmpe275.teamproject.model.Menu"/>
+ 		<mapping class="com.project.model.User"/>
+ 		<mapping class="com.project.model.Order_details"/>
+ 		<mapping class="com.project.model.Menu"/>
  		
 
 </session-factory>

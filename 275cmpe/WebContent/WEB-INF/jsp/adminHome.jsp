@@ -8,7 +8,7 @@
 <div class="col-sm-4" style="text-align:center">
 	<br>
 	<p> Add Menu Item
-	<form role="form" method="POST" action="getprofilehtml.html">
+	<form role="form" method="POST" action="addMenu.html">
 	<div class="form-group">
    <table>
     <tr>
