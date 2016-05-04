@@ -3,10 +3,13 @@ package com.project.DAO;
 
 
 import com.project.model.Menu;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.criterion.Restrictions;
 
 public class menuDAO {
 
@@ -20,6 +23,7 @@ public class menuDAO {
 			session.close();
 			sessionFactory.close();
 		}
+		
 		public Menu getMenu(int j){
 			System.out.println(" In DAO"+ j);
 			
@@ -32,5 +36,36 @@ public class menuDAO {
 			session.close();
 			sessionFactory.close();
 			return men;
+		}
+		public void deactivateMenu(String itemName) {
+			// TODO Auto-generated method stub
+			SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
+			Session session=sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Menu.class);
+			criteria.add(Restrictions.eq("item_name", itemName));
+			Menu men=(Menu)criteria.uniqueResult();
+			men.setMenu_status("false");
+			session.saveOrUpdate(men);
+			session.getTransaction().commit();;
+			session.flush();
+			session.close();
+			sessionFactory.close();
+		}
+
+		public void activateMenu(String itemName) {
+			// TODO Auto-generated method stub
+			SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
+			Session session=sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Menu.class);
+			criteria.add(Restrictions.eq("item_name", itemName));
+			Menu men=(Menu)criteria.uniqueResult();
+			men.setMenu_status("true");
+			session.saveOrUpdate(men);
+			session.getTransaction().commit();;
+			session.flush();
+			session.close();
+			sessionFactory.close();
 		}
 }

@@ -45,4 +45,13 @@ public class menuService {
 			Menu m=menuData.getMenu(j);
 			return m;
 		}
+		public void deactivateMenu(String itemName) {
+			// TODO Auto-generated method stub
+			
+			menuData.deactivateMenu(itemName);
+		}
+		public void activateMenu(String itemName) {
+			// TODO Auto-generated method stub
+			menuData.activateMenu(itemName);
+		}
 }

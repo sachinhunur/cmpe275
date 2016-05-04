@@ -34,6 +34,7 @@ public class controller {
 		return "error";
 		
 	}
+	//ADD ITEMS INTO MENU
 	@RequestMapping(value="/addMenu", method=RequestMethod.POST)
 	public String addMenu(@RequestParam("itemName") String itemName,@RequestParam("price") String price,@RequestParam("category") String category,@RequestParam("calories") int calories,@RequestParam("time") int prepTime,@RequestParam("status") String status,@RequestParam("pic") File image,ModelMap model) {
 		
@@ -43,15 +44,33 @@ public class controller {
 		byte [] b=menu.getImage();
 		
 		 try{
-	            FileOutputStream fos = new FileOutputStream("/Users/sachinhunur/Desktop/"+itemName+".jpg"); 
+	            FileOutputStream fos = new FileOutputStream("/Users/sachinhunur/git/CMPE275/275cmpe/WebContent/images/"+itemName+".jpg"); 
 	            fos.write(b);
 	            
 	            fos.close();
 	        }catch(Exception e){
 	            e.printStackTrace();
 	        }
-		 System.out.print(b);
-		 model.addAttribute("file","/Users/sachinhunur/Desktop/"+itemName+".jpg");
+		// System.out.print(b);
+		// model.addAttribute("file","./images/"+itemName+".jpg");
+		return "adminHome";
+		
+	}
+	
+	//Deactivate MENU ITEM
+	@RequestMapping(value="/deactivate", method=RequestMethod.POST)
+	public String deactivateMenu(@RequestParam("itemName") String itemName,ModelMap model) {
+		 
+		menuService.deactivateMenu(itemName);
+		return "adminHome";
+		
+	}
+	
+	//Activate MENU ITEM
+	@RequestMapping(value="/activate", method=RequestMethod.POST)
+	public String activateMenu(@RequestParam("itemName") String itemName,ModelMap model) {
+		 
+		menuService.activateMenu(itemName);
 		return "adminHome";
 		
 	}

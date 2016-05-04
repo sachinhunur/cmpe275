@@ -7,7 +7,7 @@
 <body>
 <div class="col-sm-4" style="text-align:center">
 	<br>
-	<p> Add Menu Item
+	<h1>Add Menu Item</h1> 
 	<form role="form" method="POST" action="addMenu.html">
 	<div class="form-group">
    <table>
@@ -44,28 +44,25 @@
             <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Add Menu Item"/>
 	   </td>
     </tr>
-    <tr>
-        <td colspan="2">
-            <img src=${file}   style="width:304px;height:228px;">
-
-	   </td>
-    </tr>
-    
+       
 </table>  
 </div>
 </form>
 </div>
+<form role="form" method="POST" action="deactivate.html">
 <div class="col-sm-4" style="text-align:center">
 
 Name: <input class="form-control" type="text" name="itemName" required>
 <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Deactivate Item"/>
 	   
 </div>
-
+</form>
+<form role="form" method="POST" action="activate.html">
 <div class="col-sm-4" style="text-align:center">
 
 Name: <input class="form-control" type="text" name="itemName" required>
 <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Activate Menu Item"/>
 	   
 </div>
+</form>
 </body></html>
