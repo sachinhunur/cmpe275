@@ -39,7 +39,7 @@ public class controller {
 		
 		
 		menuService.addMenu(itemName,price,category,status,prepTime,calories,image);
-		Menu menu=menuService.getMenu(4);
+		Menu menu=menuService.getMenu(1);
 		byte [] b=menu.getImage();
 		
 		 try{

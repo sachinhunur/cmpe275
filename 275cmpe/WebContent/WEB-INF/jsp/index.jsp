@@ -18,7 +18,12 @@ body {
 <div class="col-sm-4" style="text-align:center">
 	<br>
 	
-	<form role="form" method="POST" action="getprofilehtml">
+	<form role="form" method="POST" action="getprofilehtml.html">
+	
+	<div>
+		<img alt="image" src="./images/party.jpg"></img>
+	</div>
+	
 	<div class="form-group">
    <table>
     <tr>
