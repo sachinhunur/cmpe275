@@ -1,5 +1,6 @@
 package com.project.model;
 
+import java.io.InputStream;
 import java.util.Currency;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
+import org.hibernate.type.BlobType;
 import org.hibernate.validator.constraints.Range;
 @Entity
 public class Menu {
@@ -32,12 +34,12 @@ public class Menu {
 	private String menu_status;
 	private String item_name;
 	private String unitPrice;//eg:$5.5
-	@Enumerated(EnumType.STRING)
-    private Category category;
-	public Category getCategory() {
+	//@Enumerated(EnumType.STRING)
+    private String category;
+	public String getCategory() {
 		return category;
 	}
-	public void setCategory(Category category) {
+	public void setCategory(String category) {
 		  this.category = category;
 		 }
 	@Range(min=0)
@@ -45,6 +47,7 @@ public class Menu {
 	private Currency unit_price;//doubtful
 	@Range(min=1, max=10)
 	private int preparation_time;
+	private byte[] image;
 	public int getMenu_id() {
 		return menu_id;
 	}
@@ -56,6 +59,12 @@ public class Menu {
 	}
 	public void setMenu_status(String menu_status) {
 		this.menu_status = menu_status;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 	public String getItem_name() {
 		return item_name;

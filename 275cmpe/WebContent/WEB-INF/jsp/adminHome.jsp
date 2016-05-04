@@ -44,6 +44,12 @@
             <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Add Menu Item"/>
 	   </td>
     </tr>
+    <tr>
+        <td colspan="2">
+            <img src=${file}   style="width:304px;height:228px;">
+
+	   </td>
+    </tr>
     
 </table>  
 </div>
