@@ -9,16 +9,26 @@ Group10
 </title>
 <style type="text/css">
 body {
-	background-image: url('http://crunchify.com/bg.png');
+	/* background-image:url('http://farm3.static.flickr.com/2150/2176790889_68cc469171.jpg'); */
+    background-repeat: no-repeat;
+   background-attachment: fixed;
+    background-position: center; 
+	opacity:0.9;
 }
+
+ .bs-example{
+    	margin: 20px;
+    }
+    .resize{
+        width: 200px;
+    }
+    
 </style>
+<h1 align="center">LOGIN</h1>
 </head>
 <body>
 
-<div class="col-sm-4" style="text-align:center">
-	<br>
-	
-	<form role="form" method="POST" action="getprofilehtml.html">
+	<!-- <form align:"center" role="form" method="POST" action="getprofilehtml.html">
 	
 	<div>
 		<img alt="image" src="./images/party.jpg"></img>
@@ -31,7 +41,7 @@ body {
        
     </tr>
      <tr>
-        <td>Password: <input class="form-control" type="text" name="password" required></td>
+        <td>Password: <input class="form-control" type="password" name="password" required></td>
        
     </tr>
     <tr>
@@ -39,10 +49,33 @@ body {
             <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Get profile as html"/>
 	   </td>
     </tr>
-</table>  
+	</table>  
 </div>
-</form>
+</form> -->
+
+<div class="bs-example" align="center">
+    <form align:"center" role="form" method="POST" action="getprofilehtml.html">
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="text" class="form-control resize" id="inputEmail" name="id" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control resize" id="inputPassword" name="password" placeholder="Password">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
 </div>
 
+<div text-align="center">
+	<form align="center">
+	<h2>Don't have account?
+	<a  href="rendersignup.html" >Sign Up</a>
+	<!-- <form method="GET" action="usersignup.html">
+		<input type="submit" value="Sign Up"class="btn btn-primary"/>
+	</form> -->
+	</form>
+</div>
 </body>
 </html>

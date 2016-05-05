@@ -16,6 +16,8 @@
         <servlet-name>controller</servlet-name>
        <url-pattern>/getprofilehtml.html</url-pattern>
       <url-pattern>/addMenu.html</url-pattern> 
+      <url-pattern>/rendersignup.html</url-pattern>
+      <url-pattern>/signup.html</url-pattern>
     </servlet-mapping>
   
 </web-app>

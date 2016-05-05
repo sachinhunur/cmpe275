@@ -18,20 +18,30 @@ private String username;
 private boolean enabled; //this enabled field will be set to false. During the account verification process -if successful it will be set to true
 @Column(nullable=false)
 private String password;
-@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-private Set<Order_details> order_details = new HashSet<Order_details>(0);//0 means the initial capacity
+ // @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//private Set<Order_details> order_details = new HashSet<Order_details>(0);//0 means the initial capacity
 
+public User(){
+	
+}
 
-public Set<Order_details> getOrder_details() {
+public User(String username, String password) {
+	super();
+	this.username = username;
+	this.password = password;
+}
+
+/*public Set<Order_details> getOrder_details() {
 	return order_details;
 }
 public void setOrder_details(Set<Order_details> order_details) {
 	this.order_details = order_details;
-}
+}*/
 public String getPassword()
 {
 	return this.password;
 }
+
 public void setPassword(String password)
 {
 	this.password=password;
@@ -56,5 +66,12 @@ public void setUser_id(int user_id)
 {
 	this.user_id = user_id;
 }
+
+@Override
+public String toString() {
+	return "User [username=" + username + ", password=" + password + "]";
+}
+
+
 
 }
