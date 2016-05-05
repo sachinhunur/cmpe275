@@ -13,16 +13,22 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Category;
 import com.project.model.Menu;
+import com.project.model.User;
 import com.project.service.menuService;
+import com.project.service.UserService;
 
 
 @Controller
 public class controller {
 
+	UserService userService=new UserService();
+	
 	menuService menuService= new menuService();
+	
 	@RequestMapping(value="/getprofilehtml", method=RequestMethod.POST)
 	public String adminLogin(@RequestParam("id") String id,@RequestParam("password") String password,ModelMap model) {
 		 
@@ -51,17 +57,19 @@ public class controller {
 	        }catch(Exception e){
 	            e.printStackTrace();
 	        }
+
 		// System.out.print(b);
 		// model.addAttribute("file","./images/"+itemName+".jpg");
 		return "adminHome";
 		
 	}
-	
+
 	//Deactivate MENU ITEM
 	@RequestMapping(value="/deactivate", method=RequestMethod.POST)
 	public String deactivateMenu(@RequestParam("itemName") String itemName,ModelMap model) {
 		 
 		menuService.deactivateMenu(itemName);
+
 		return "adminHome";
 		
 	}
@@ -74,4 +82,25 @@ public class controller {
 		return "adminHome";
 		
 	}
+	@RequestMapping(value="/rendersignup", method=RequestMethod.GET)
+	public String showSignUp()
+	{
+		System.out.println("inside add new user");
+		//return new ModelAndView("signup.jsp");
+		return "signup";
+	}
+	
+	@RequestMapping(value="/signup.html",method=RequestMethod.POST)
+	public String addNewUser(@RequestParam("email") String email,@RequestParam("password") String password)
+	{
+		System.out.println("email:"+email+" password:"+password);
+		User user=new User();
+		user.setUsername(email);
+		user.setPassword(password);
+		user.setEnabled(true);
+		System.out.println("user:"+user);
+		userService.addNewUser(user);
+		return "index";
+	}
+	
 }
