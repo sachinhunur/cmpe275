@@ -15,6 +15,9 @@ public class menuService {
 		Menu menu=new Menu();
 		menuDAO menuData= new menuDAO();
 		public static int i=1;
+		
+	
+		
 		public void addMenu(String itemName,String price,String category,String status,int prepTime,int calories,File image)
 		{
 			byte[] bFile = new byte[(int) image.length()];
@@ -45,6 +48,7 @@ public class menuService {
 			Menu m=menuData.getMenu(j);
 			return m;
 		}
+
 		public void deactivateMenu(String itemName) {
 			// TODO Auto-generated method stub
 			
