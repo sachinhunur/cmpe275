@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <style type="text/css">
  img{
 
@@ -17,6 +17,53 @@
   }
 
 </style>
+
+<script type="text/javascript">
+
+// onclick="document.getElementById('quantity')+' '+${menu.item_name}" value="document.getElementById('quantity')'+'${menu.item_name}"
+
+
+/* $(document).ready(function(){
+	alert("inside ready");
+	var x=document.getElementById("quantity").value;
+	alert("x:"+x);
+    $("#checkbox4").click(function(){
+    	alert("inside check");
+        $(this).value=($(this).val()).append(x);
+    });
+}); */
+function getValue4()
+{
+	alert("inside getValue:");
+	if(document.getElementById('checkbox4').checked){
+		var x=document.getElementById("quantity1").value;
+		alert("x:"+x);
+		document.getElementById("checkbox4").value=document.getElementById("checkbox4").value+x;
+		alert("value is:"+document.getElementById("checkbox4").value);
+		}
+}
+function getValue1()
+{
+	alert("inside getValue");
+	if(document.getElementById('checkbox1').checked){
+	var x=document.getElementById("quantity1").value;
+	alert("x:"+x);
+	document.getElementById("checkbox1").value=document.getElementById("checkbox1").value+x;
+	alert("value is:"+document.getElementById("checkbox1").value);
+	}
+}
+
+function getValue3()
+{
+	alert("inside getValue");
+	if(document.getElementById('checkbox3').checked){
+	var x=document.getElementById("quantity3").value;
+	alert("x:"+x);
+	document.getElementById("checkbox3").value=document.getElementById("checkbox3").value+x;
+	alert("value is:"+document.getElementById("checkbox3").value);
+	}
+}
+</script>
   
 </head>
 <body>
@@ -29,6 +76,7 @@
   <li><a href="#tab_c" data-toggle="pill">Main Course</a></li>
   <li><a href="#tab_d" data-toggle="pill">Dessert</a></li>
 </ul>
+<h2><%= session.getAttribute("email") %></h2>
 
 <div class="tab-content col-md-8">
 		
@@ -51,13 +99,13 @@
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		            <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		            <td><input type="number" name="quantity1" id="quantity1" value=1 min=1 max=100></input></td>
+		            <td><input type="checkbox" id="checkbox1" value="${menu.item_name}" name="menus" onchange="getValue1()"/></td>
 		        </tr>
 		    </c:forEach>
 			</table>
-			<h2><%= session.getAttribute("email") %></h2>
-			<input type="text" value=<%= session.getAttribute("email") %> name="${session.email}" />
+			
+			
         </div>
         <div class="tab-pane" id="tab_b">
              <h4>Appetizer</h4>
@@ -76,8 +124,8 @@
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		             <td><input type="number" name="quantity2" value=1 min=1 max=100></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}" value="${menu.item_name}" name="menus" onchange="getValue2()"/></td>
 		        </tr>
 		    </c:forEach>
 			</table>
@@ -99,8 +147,8 @@
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		             <td><input type="number" id="quantity3" name="quantity" value=1 min=1 max=100></input></td>
+		            <td><input type="checkbox" id="checkbox3" value="${menu.item_name}" name="menus" onchange="getValue3()"/></td>
 		        </tr>
 		    </c:forEach>
 			</table>
@@ -122,12 +170,14 @@
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		            <td><input type="number" name="quantity" id="quantity4" value=1 min=1 max=100></input></td>
+		            <td><input  type="checkbox"  value="${menu.item_name}" id="checkbox4" name="menus" onchange="getValue4(this.value)"/></td>
+		        	
 		        </tr>
 		    </c:forEach>
 			</table>
         </div>
+        
        
         
 </div><!-- tab content -->

@@ -41,6 +41,8 @@
 	      <url-pattern>/userlogin.html</url-pattern>
 	      <url-pattern>/receive_order.html</url-pattern>
 	       <url-pattern>/logout.html</url-pattern>
+	       <url-pattern>/signup2.html</url-pattern>
+	       <url-pattern>/confirmOrder.html</url-pattern>
     </servlet-mapping>
      
   

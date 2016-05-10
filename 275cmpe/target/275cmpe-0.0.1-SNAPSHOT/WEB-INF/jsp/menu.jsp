@@ -20,7 +20,7 @@
   
 </head>
 <body>
-<form action="receive_order.html" method="POST">
+<form role="form" action="receive_order.html" method="POST">
 
 <div class="container">
 <ul class="nav nav-pills nav-stacked col-md-4">
@@ -134,9 +134,13 @@
  
 </div>
 <input type="submit" name="submit_order" value="Place order"/>
+
 </form>
-<form action="/logout" method="POST">
-<input type="submit" name="logout" value="LOGOUT" />
+<h2>${success}</h2>
+<form role="form" method="POST" action="logout.html" >
+	<input type="submit" name="logout" value="LOGOUT" />
 </form>
+
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.transaction.Transactional;
 
@@ -12,6 +13,8 @@ import com.project.DAO.UserDAO;
 import com.project.DAO.orderDAO;
 import com.project.model.Order_details;
 import com.project.model.User;
+import com.sendgrid.SendGrid;
+import com.sendgrid.SendGridException;
 
 @Service
 public class UserService {
@@ -56,6 +59,75 @@ public class UserService {
 		orderDAO placeOrder=new orderDAO();
 		placeOrder.placeOrder(order);
 		
+	}
+	
+	
+	//send email
+	public int sendmail(String email, String action)
+	{
+		Random rn = new Random();
+		String BODY=" ";
+		int verification;
+		SendGrid.Email emaill = new SendGrid.Email();
+		emaill.addTo(email);
+		emaill.setFrom("shikha.kukreja@sjsu.edu");
+		if(action.equalsIgnoreCase("VERIFY"))
+		{
+			verification= rn.nextInt(100000);
+			BODY=BODY+"Your verification code is "+verification+" please put the code to complete the signup process";//it generates random number between 0 and 100000
+			SendGrid sendgrid = new SendGrid("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");
+			//veremail.put(verification,email);
+			emaill.setSubject("VERIFICATION CODE");
+			emaill.setHtml(BODY);
+			try {
+				   SendGrid.Response response = sendgrid.send(emaill);
+			} catch (SendGridException e) {
+				   // TODO Auto-generated catch block
+				   e.printStackTrace();
+			}
+			System.out.println("Email Sent!");
+			return verification;
+		}
+		else if(action.equalsIgnoreCase("CONFIRM"))
+		{
+			BODY=BODY+"This is confirmation mail for order";
+			SendGrid sendgrid = new SendGrid("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");
+			//veremail.put(verification,email);
+			emaill.setSubject("CONFIRMATION MAIL");
+			emaill.setHtml(BODY);
+			try {
+				   SendGrid.Response response = sendgrid.send(emaill);
+			} catch (SendGridException e) {
+				   // TODO Auto-generated catch block
+				   e.printStackTrace();
+			}
+			System.out.println("Email Sent!");
+			return 1;
+		}
+		else
+		{
+			return 1;
+		}
+		
+		
+		  
+		 
+	}
+	
+	//check user exists
+	public User getUser(User user)
+	{
+		User user1 = null;
+		System.out.println("in userservice:"+user);
+		try{
+		 user1=userDAO.getUser(user);
+		
+		}
+		catch (Exception e){
+			System.out.println("in exception");
+			e.printStackTrace();
+		}
+		return user1;
 	}
 
 }

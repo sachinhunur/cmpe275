@@ -3,6 +3,7 @@ package com.project.DAO;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -26,12 +27,39 @@ public class UserDAO {
 		SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
+		
 		session.save(user);
+		
 		session.getTransaction().commit();
 		session.close();
 		sessionFactory.close();
 		 
 	}
+	
+	public User getUser(User user)
+	{
+		System.out.println("inside user dao:"+user);
+		//sessionFactory.getCurrentSession().save(user);
+		SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		//Query query=  session.createQuery("from User where email_id=?");
+		
+		//user=(User)query.setString(1,user.getEmail_id()).uniqueResult();
+		//user = (User) session.get(User.class, user.getVerification());
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("email_id", user.getEmail_id()));
+		User u=(User)criteria.uniqueResult();
+		
+		session.getTransaction().commit();
+		session.close();
+		sessionFactory.close();
+		return u;
+		 
+	}
+	
+	
+	
 
 	
 	public int searchUser(User user)

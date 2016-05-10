@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -121,22 +122,79 @@ public class UserController {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String pno=request.getParameter("phone_no");
-		Integer vcode=Integer.parseInt(request.getParameter("verification_code"));
+		//Integer vcode=Integer.parseInt(request.getParameter("verification_code"));
 		
-		User user=new User();
+		HttpSession session=request.getSession();
+		session.setAttribute("first_name", fname);
+		session.setAttribute("last_name", lname);
+		session.setAttribute("email", email);
+		session.setAttribute("password", password);
+		session.setAttribute("phone_no", pno);
+		
+		//User user=new User();
+		
+		//user.setFirst_name(fname);
+		///user.setLast_name(lname);
+		//user.setEmail_id(email);
+		//user.setPassword(password);
+		//user.setPhone_number(pno);
+		//user.setVerification_code(vcode);
+		//user.setEnabled(true);
+
 		UserService userService=new UserService();
 		
-		user.setFirst_name(fname);
-		user.setLast_name(lname);
-		user.setEmail_id(email);
-		user.setPassword(password);
-		user.setPhone_number(pno);
-		user.setVerification_code(vcode);
-		user.setEnabled(true);
-
+		
 		System.out.println("email:"+email+" password:"+password);
-		userService.addNewUser(user);
-		return "index";
+		//userService.addNewUser(user);
+		
+		//send email logic
+		int veri_code=userService.sendmail(email,"VERIFY");
+		System.out.println("vcode:"+veri_code);
+		session.setAttribute("verification", veri_code);
+		
+		return "verificationCode";
+	}
+	
+	
+	
+	//for checking verification code
+	@RequestMapping(value="/signup2",method=RequestMethod.POST)
+	public String sendEmail(HttpServletRequest request, HttpServletResponse response)
+	{
+		System.out.println("inside check verification code");
+		Integer vcode=Integer.parseInt(request.getParameter("verification_code"));
+		HttpSession s=request.getSession();
+		System.out.println("from text box:"+vcode);
+		if(vcode.equals(s.getAttribute("verification")))
+		{
+			User user=new User();
+			UserService userService=new UserService();
+			
+			System.out.println("insert into db");
+			user.setFirst_name((s.getAttribute("first_name")).toString());
+			user.setLast_name((s.getAttribute("last_name")).toString());
+			user.setEmail_id((s.getAttribute("email")).toString());
+			user.setPassword((s.getAttribute("password")).toString());
+			user.setPhone_number((s.getAttribute("phone_no")).toString());
+			user.setVerification_code(vcode);
+			user.setEnabled(true);
+			User u=userService.getUser(user);
+			if(u==null)
+			{
+				userService.addNewUser(user);
+				return "index";
+			}
+			else
+			{
+				System.out.println("user already exists..!!");
+			}
+		}
+		else
+		{
+			System.out.println("verification code does not match");
+			
+		}
+		return "error";
 	}
 	
 	//Taking order from user
@@ -145,45 +203,95 @@ public class UserController {
 	{
 		//ModelAndView mv=new ModelAndView();
 		String[] items=request.getParameterValues("menus");
+		String[] quantity=request.getParameterValues("quantity");
+		ArrayList<Integer> indices=new ArrayList<Integer>();
 		HashMap<String, Integer> order=new HashMap<String,Integer>();
 		System.out.println("no. of items:"+items.length);
-		int i=0;
+		int i=0,j=0;;
 		while(i<items.length)
 		{
-			System.out.println("items:"+items[i]);
+			/*System.out.println("items:"+items[i]);
 			if(items[i].equals(""))
 			{
 				i++;
 			}
 			else
 			{
+				if(!(i+1==items.length))
+				{
 				System.out.println("i="+items[i]+" , "+items[i+1]);
-				order.put(items[i+1], Integer.parseInt(items[i]));
+				// 	order.put(items[i+1], Integer.parseInt(items[i]));
 				i=i+2;
+				}
+			}*/
+			if(items[i]!="")
+			{
+			System.out.println("items:"+items[i]);
+			indices.add(i);
 			}
+			i++;
 		}
+		
+		for(Integer in:indices)
+		{
+			System.out.println("in:"+in);
+		}
+		
+		while(j<quantity.length)
+		{
+			System.out.println("quantity:"+quantity[j]);
+			j++;
+		}
+		
 		String item=new String();
 		String qty=new String();
 		float price=0;
-		for(Entry<String, Integer> e : order.entrySet())
+		int reload_menu=0;
+		
+		/*for(Entry<String, Integer> e : order.entrySet())
 		{
 			System.out.println("e:"+e.getKey()+","+e.getValue());
 			item+=","+e.getKey();
 			qty+=" "+e.getValue();
 			Menu menu=menuService.getMenu(e.getKey());
-			price+=Float.parseFloat(menu.getUnitPrice())*e.getValue();
-			
+			if(!(menu.getMenu_status().equals("true")))
+			{
+				System.out.println("admin has disabled one order");
+				reload_menu=1;
+				break;
+				//price+=Float.parseFloat(menu.getUnitPrice())*e.getValue();
+			}
 		}
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
+		*/
+		/*if(reload_menu!=1)
+		{
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
 		//String s=date.toString();
 		
 		//String[] arrayOfString=s.split("\\s+");
-		System.out.println(dateFormat.format(date)+" "+price +" "+ item+" "+qty);
-		UserService userService=new UserService();
-		String pickTime="10:00PM";
-		userService.placeOrder(item,qty,date,price,pickTime);
+			System.out.println(dateFormat.format(date)+" "+price +" "+ item+" "+qty);
+			UserService userService=new UserService();
+			String pickTime="8:00PM";
+		//userService.placeOrder(item,qty,date,price,pickTime);
+			return new ModelAndView("confirmOrder");
+		}
+		else
+		{
+			return new ModelAndView("menu");
+		}*/
 		return new ModelAndView("placeOrders");
+	}
+	
+	//on confirming order
+	@RequestMapping(value="",method=RequestMethod.POST)
+	public void sendConfirmEmail(HttpServletRequest request, HttpServletResponse response)
+	{
+		UserService us=new UserService();
+		HttpSession s=request.getSession();
+		String email=s.getAttribute("email").toString();
+		us.sendmail(email, "CONFIRM");
+		
 	}
 	
 	

@@ -50,16 +50,13 @@ public class controller {
 		menuService.addMenu(itemName,price,category,status,prepTime,calories,image);
 		Menu menu=menuService.getMenu(itemName);
 		byte [] b=menu.getImage();
-		
 		 try{
-	            FileOutputStream fos = new FileOutputStream("/Users/sachinhunur/git/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+	            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
 	            fos.write(b);
-	            
 	            fos.close();
 	        }catch(Exception e){
 	            e.printStackTrace();
 	        }
-
 		// System.out.print(b);
 		// model.addAttribute("file","./images/"+itemName+".jpg");
 		return "adminHome";
@@ -99,7 +96,7 @@ public class controller {
 		model.addAttribute("status", menu.getMenu_status());
 		byte [] b=menu.getImage();
 		 try{
-	            FileOutputStream fos = new FileOutputStream("/Users/sachinhunur/git/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+	            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
 	            fos.write(b);
 	            
 	            fos.close();
@@ -127,11 +124,11 @@ public class controller {
 				 menuService.updateMenu(id,itemName,price,category,status,prepTime,calories,image.getBytes());
 				}
 			 Menu menu=menuService.getMenu(itemName);
-			 File file=new File("C:/Users/Anuja Asalkar/git/cmpe275/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
+			 File file=new File("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
 			 file.delete();
 			 byte [] b=menu.getImage();
 			 try{
-		            FileOutputStream fos = new FileOutputStream("/Users/sachinhunur/git/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+		            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
 		            fos.write(b);
 		            
 		            fos.close();

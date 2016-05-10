@@ -53,12 +53,9 @@ body {
             <input type="tel" class="form-control resize" id="inputPhoneNumber" name="phone_no" placeholder="Phone Number">
         </div>
         
-         <div class="form-group">
-            <label for="inputVerificationCode">Verification Code</label>
-            <input type="number" class="form-control resize" id="inputVerificationCode" name="verification_code" placeholder="Verification Code">
-        </div>
+         
       
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" class="btn btn-primary">Send Verification Code</button>
     </form>
 </div>
 
