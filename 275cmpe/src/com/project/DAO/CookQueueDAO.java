@@ -21,7 +21,7 @@ public class CookQueueDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	
+	//delete from cook table
 	public void resetCook()
 	{
 		System.out.println("inside CookQueue dao:");

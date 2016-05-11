@@ -25,7 +25,7 @@ public class menuService {
 		public static int i=1;
 		
 	
-		
+		@Transactional
 		public void addMenu(String itemName,String price,String category,String status,int prepTime,int calories,MultipartFile image)
 		{
 			/*byte[] bFile = new byte[(int) image.length()];
@@ -59,6 +59,8 @@ public class menuService {
 			return;
 			
 		}
+		
+		@Transactional
 		public static Menu getMenu(String itemName)
 		{
 			//menu.setItem_name(itemName);
@@ -66,20 +68,27 @@ public class menuService {
 			return m;
 		}
 
+		@Transactional
 		public void deactivateMenu(String itemName) {
 			// TODO Auto-generated method stub
 			
 			menuData.deactivateMenu(itemName);
 		}
+		
+		@Transactional
 		public void activateMenu(String itemName) {
 			// TODO Auto-generated method stub
 			menuData.activateMenu(itemName);
 		}
+		
+		@Transactional
 		public Menu editMenu(int id) {
 			// TODO Auto-generated method stub
 			return menuData.editMenu(id);
 			
 		}
+		
+		@Transactional
 		public void updateMenu(int id,String itemName, String price, String category, String status, int prepTime,
 				int calories, byte[] bs) {
 			menu.setMenu_id(id);
@@ -102,5 +111,10 @@ public class menuService {
 			return m;
 		}
 		
+		@Transactional
+		public void resetMenu()
+		{
+			menuData.resetMenu();
+		}
 		
 }

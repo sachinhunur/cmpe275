@@ -153,6 +153,10 @@ public class controller {
 			System.out.println("inside reset table");
 			CookQueueService cqs=new CookQueueService();
 			cqs.reset();
+			
+			menuService ms=new menuService();
+			ms.resetMenu();
+					
 		}
 		
 		//adding into cook
