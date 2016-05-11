@@ -33,12 +33,14 @@
          <url-pattern>/update.html</url-pattern>
         <url-pattern>/resetMenu.html</url-pattern>
         <url-pattern>/setMenu.html</url-pattern>
+         <url-pattern>/renderAdmin.html</url-pattern>
     </servlet-mapping>
   
     
     <servlet-mapping>
         <servlet-name>user_controller</servlet-name>
-         <url-pattern>/rendersignup.html</url-pattern>
+         <url-pattern>/renderSignup.html</url-pattern>
+          <url-pattern>/renderLogin.html</url-pattern>
 	      <url-pattern>/signup.html</url-pattern>
 	      <url-pattern>/userlogin.html</url-pattern>
 	      <url-pattern>/receive_order.html</url-pattern>

@@ -1,6 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <!-- Latest compiled and minified CSS -->
+
+
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <style>
+
+        #header {
+            height: 60px;
+            margin: 0px
+        }
+
+        #secondSection {
+            height: 50px;
+        }
+
+    </style>
+
+</head>
+
+
+<body style="background-color:black">
+
+
+<header>
+    <div id="header" style="background-color:#dc0e28;" align="left" class="container-fluid">
+
+        <nav>
+            <p align="center" style="font-weight:bold;color:#000;font-size:40px">Online Restro</p>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="renderLogin.html" align="right">Customer</a></li>
+
+                <li><a href="renderAdmin.html" align="right">Admin</a></li>
+            </ul>
+
+        </nav>
+
+    </div>
+
+
+</header>
+<div id="secondSection" align="center">
+    <img src="https://hawksworthrestaurant.com/wp-content/uploads/2013/06/Hawksworth-Restaurant-Squid-Ceviche-home.jpg" width="100%" height="450">
+</div>
+
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -54,7 +114,7 @@ body {
 	</form>
 </form> -->
 
-<div class="bs-example" align="center">
+<!-- <div class="bs-example" align="center">
     <form align:"center" role="form" method="POST" action="getprofilehtml.html">
         <div class="form-group">
             <label for="inputEmail">Email</label>
@@ -75,5 +135,5 @@ body {
 	<a  href="rendersignup.html" >Sign Up</a>
 	</form>
 </div>
-</body>
-</html>
+</body> 
+</html> -->

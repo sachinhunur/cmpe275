@@ -38,11 +38,21 @@ public class controller {
 	
 	menuService menuService= new menuService();
 	
+	//render admin login page
+	@RequestMapping(value="/renderAdmin", method=RequestMethod.GET)
+	public String showLogin()
+	{
+		System.out.println("inside render admin");
+		//return new ModelAndView("signup.jsp");
+		return "loginAdmin";
+	}
+	
+	
 	@RequestMapping(value="/getprofilehtml", method=RequestMethod.POST)
 	public String adminLogin(@RequestParam("email") String id,@RequestParam("password") String password,ModelMap model) {
 		 
 		System.out.println(id+"wtf"+password);
-		if(id.equalsIgnoreCase("sachin") && password.equalsIgnoreCase("sac"))
+		if(id.equalsIgnoreCase("sachin@gmail.com") && password.equalsIgnoreCase("sac"))
 		{
 			return "adminHome";
 		}

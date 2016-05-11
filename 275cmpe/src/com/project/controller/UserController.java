@@ -107,13 +107,22 @@ public class UserController {
 			return new ModelAndView("index");
 		}
 	//Render SignUp page
-	@RequestMapping(value="/rendersignup", method=RequestMethod.GET)
+	@RequestMapping(value="/renderSignup", method=RequestMethod.GET)
 	public String showSignUp()
 	{
-		System.out.println("inside add new user");
+		System.out.println("inside render signup");
 		//return new ModelAndView("signup.jsp");
-		return "signup";
+		return "signupUser";
 	}
+	
+	//Render SignUp page
+		@RequestMapping(value="/renderLogin", method=RequestMethod.GET)
+		public String showLogin()
+		{
+			System.out.println("inside render login user");
+			//return new ModelAndView("signup.jsp");
+			return "loginUser";
+		}
 	
 	//User SignUp
 	@RequestMapping(value="/signup",method=RequestMethod.POST)
