@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.Date;
+
 import java.util.Random;
 
 import javax.transaction.Transactional;
@@ -21,7 +22,6 @@ public class UserService {
 	
 	@Autowired
 	UserDAO userDAO=new UserDAO();
-	
 	
 	@Transactional
 	public void addNewUser(User user)//String fname,String lname,String email, String password,String pno,Integer vcode)

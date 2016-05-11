@@ -34,9 +34,9 @@
 }); */
 function getValue4()
 {
-	alert("inside getValue:");
-	if(document.getElementById('checkbox4').checked){
-		var x=document.getElementById("quantity1").value;
+	alert("inside getValue4:");
+	if(document.getElementById("checkbox4").checked){
+		var x=document.getElementById("quantity4").value;
 		alert("x:"+x);
 		document.getElementById("checkbox4").value=document.getElementById("checkbox4").value+x;
 		alert("value is:"+document.getElementById("checkbox4").value);
@@ -63,6 +63,31 @@ function getValue3()
 	alert("value is:"+document.getElementById("checkbox3").value);
 	}
 }
+
+
+function getValue(id1)
+{
+	alert("id1:"+id1);
+	if(id1.checked)
+	{
+		alert("value is:"+document.getElementById("anuja").value);	
+	}
+	else
+	{
+		alert("no id");	
+	}
+}
+
+</script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.add').click(function() {
+        	alert("insde ");
+        	$(this).val( $(this).closest('tr').find('.quantity').val());
+           alert($(this).val);
+        });
+    });
 </script>
   
 </head>
@@ -99,8 +124,9 @@ function getValue3()
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		            <td><input type="number" name="quantity1" id="quantity1" value=1 min=1 max=100></input></td>
-		            <td><input type="checkbox" id="checkbox1" value="${menu.item_name}" name="menus" onchange="getValue1()"/></td>
+		            <td><input type="number" name="menus" id="quantity1" min=1 max=100 placeholder="1"></input></td>
+		            <td><input type="checkbox" id="checkbox1" value="${menu.item_name}" name="menus"
+		            /></td>
 		        </tr>
 		    </c:forEach>
 			</table>
@@ -124,7 +150,7 @@ function getValue3()
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="quantity2" value=1 min=1 max=100></input></td>
+		             <td><input type="number" name="menus" min=1 max=100 placeholder="1"></input></td>
 		            <td><input type="checkbox" id="${menu.item_name}" value="${menu.item_name}" name="menus" onchange="getValue2()"/></td>
 		        </tr>
 		    </c:forEach>
@@ -147,8 +173,8 @@ function getValue3()
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" id="quantity3" name="quantity" value=1 min=1 max=100></input></td>
-		            <td><input type="checkbox" id="checkbox3" value="${menu.item_name}" name="menus" onchange="getValue3()"/></td>
+		             <td><input type="number" id="quantity" name="menus" min=1 max=100 placeholder="1"></input></td>
+		            <td><input type="checkbox" id="checkbox3" value="${menu.item_name}" name="menus" /></td>
 		        </tr>
 		    </c:forEach>
 			</table>
@@ -170,8 +196,8 @@ function getValue3()
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		            <td><input type="number" name="quantity" id="quantity4" value=1 min=1 max=100></input></td>
-		            <td><input  type="checkbox"  value="${menu.item_name}" id="checkbox4" name="menus" onchange="getValue4(this.value)"/></td>
+		             <td><input type="number" name="menus" id="quantity"  min=1 max=100  placeholder="1"></input></td>
+		            <td><input  type="checkbox"  value="${menu.item_name}" name="menus" /></td> <!-- onclick="getValue(this.id)"/></td> -->
 		        	
 		        </tr>
 		    </c:forEach>

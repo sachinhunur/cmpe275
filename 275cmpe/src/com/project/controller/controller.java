@@ -4,8 +4,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import org.hibernate.type.BlobType;
@@ -18,9 +23,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Category;
+import com.project.model.CookQueue;
 import com.project.model.Menu;
 import com.project.model.User;
 import com.project.service.menuService;
+import com.project.service.CookQueueService;
 import com.project.service.UserService;
 
 
@@ -32,7 +39,7 @@ public class controller {
 	menuService menuService= new menuService();
 	
 	@RequestMapping(value="/getprofilehtml", method=RequestMethod.POST)
-	public String adminLogin(@RequestParam("id") String id,@RequestParam("password") String password,ModelMap model) {
+	public String adminLogin(@RequestParam("email") String id,@RequestParam("password") String password,ModelMap model) {
 		 
 		System.out.println(id+"wtf"+password);
 		if(id.equalsIgnoreCase("sachin") && password.equalsIgnoreCase("sac"))
@@ -136,5 +143,42 @@ public class controller {
 		            e.printStackTrace();
 		        }
 			return "adminHome";		
+		}
+		
+		
+		//for resetting order queue
+		@RequestMapping(value="/resetMenu.html",method=RequestMethod.POST)
+		public void resetTable()
+		{
+			System.out.println("inside reset table");
+			CookQueueService cqs=new CookQueueService();
+			cqs.reset();
+		}
+		
+		//adding into cook
+		@RequestMapping(value="/setMenu.html",method=RequestMethod.POST)
+		public void setTable()
+		{
+			System.out.println("inside reset table");
+			CookQueueService cqs=new CookQueueService();
+			CookQueue cq=new CookQueue();
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+			
+			try {
+				Date date = dateFormat.parse("2016-10-10");
+				cq.setCook_id(1);
+				cq.setPickup_time(timeFormat.parse("07:00"));
+				cq.setPickup_date(dateFormat.parse("2016-10-10"));
+				cq.setStart_time(timeFormat.parse("06:00"));
+				cq.setEnd_time(timeFormat.parse("06:10"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			cqs.addNewCook(cq);
 		}
   }

@@ -2,6 +2,7 @@ package com.project.controller;
 
 import java.io.FileOutputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.model.Menu;
 import com.project.model.Menu_temp;
 import com.project.model.User;
+import com.project.service.CookQueueService;
 import com.project.service.MenuTempService;
 import com.project.service.UserService;
 import com.project.service.menuService;
@@ -203,14 +205,16 @@ public class UserController {
 	{
 		//ModelAndView mv=new ModelAndView();
 		String[] items=request.getParameterValues("menus");
-		String[] quantity=request.getParameterValues("quantity");
-		ArrayList<Integer> indices=new ArrayList<Integer>();
+		
+	//	String[] quantity=request.getParameterValues("quantity");
+		
+		//ArrayList<Integer> indices=new ArrayList<Integer>();
 		HashMap<String, Integer> order=new HashMap<String,Integer>();
 		System.out.println("no. of items:"+items.length);
 		int i=0,j=0;;
 		while(i<items.length)
 		{
-			/*System.out.println("items:"+items[i]);
+			//System.out.println("items:"+items[i]);
 			if(items[i].equals(""))
 			{
 				i++;
@@ -220,77 +224,104 @@ public class UserController {
 				if(!(i+1==items.length))
 				{
 				System.out.println("i="+items[i]+" , "+items[i+1]);
-				// 	order.put(items[i+1], Integer.parseInt(items[i]));
+				order.put(items[i+1], Integer.parseInt(items[i]));
 				i=i+2;
 				}
-			}*/
-			if(items[i]!="")
-			{
+			}
+			//if(items[i]!="")
+			/*{
 			System.out.println("items:"+items[i]);
+			System.out.println("quantity:"+quantity[j]);
+			j++;
 			indices.add(i);
 			}
-			i++;
+			i++;*/
 		}
 		
-		for(Integer in:indices)
+		/*for(Integer in:indices)
 		{
 			System.out.println("in:"+in);
-		}
+		}*/
 		
-		while(j<quantity.length)
+		/*while(j<quantity.length)
 		{
 			System.out.println("quantity:"+quantity[j]);
 			j++;
 		}
-		
+		*/
 		String item=new String();
 		String qty=new String();
 		float price=0;
 		int reload_menu=0;
 		
-		/*for(Entry<String, Integer> e : order.entrySet())
+		for(Entry<String, Integer> e : order.entrySet())
 		{
 			System.out.println("e:"+e.getKey()+","+e.getValue());
 			item+=","+e.getKey();
 			qty+=" "+e.getValue();
 			Menu menu=menuService.getMenu(e.getKey());
-			if(!(menu.getMenu_status().equals("true")))
+			//if(!(menu.getMenu_status().equals("true")))
 			{
-				System.out.println("admin has disabled one order");
-				reload_menu=1;
-				break;
-				//price+=Float.parseFloat(menu.getUnitPrice())*e.getValue();
+				//System.out.println("admin has disabled one order");
+				//reload_menu=1;
+				//break;
+				price+=Float.parseFloat(menu.getUnitPrice())*e.getValue();
 			}
 		}
-		*/
-		/*if(reload_menu!=1)
+		
+		//if(reload_menu!=1)
 		{
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			Date date = new Date();
 		//String s=date.toString();
 		
 		//String[] arrayOfString=s.split("\\s+");
 			System.out.println(dateFormat.format(date)+" "+price +" "+ item+" "+qty);
 			UserService userService=new UserService();
-			String pickTime="8:00PM";
-		//userService.placeOrder(item,qty,date,price,pickTime);
+			//String pickTime="8:00PM";
+		  //  userService.placeOrder(item,qty,date,price,pickTime);
 			return new ModelAndView("confirmOrder");
 		}
-		else
+		/*else
 		{
 			return new ModelAndView("menu");
 		}*/
-		return new ModelAndView("placeOrders");
+		//return new ModelAndView("placeOrders");
 	}
 	
 	//on confirming order
-	@RequestMapping(value="",method=RequestMethod.POST)
+	@RequestMapping(value="/confirmOrder.html",method=RequestMethod.POST)
 	public void sendConfirmEmail(HttpServletRequest request, HttpServletResponse response)
 	{
-		UserService us=new UserService();
+		//UserService us=new UserService();
+		CookQueueService cqs=new CookQueueService();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+		
+		String pickup_date=request.getParameter("pickup_date");
+		String pickup_time=request.getParameter("pickup_time");
+		
+		System.out.println("date:"+pickup_date+","+pickup_time);
+		
+		Date d=null;
+		Date t=null;
+		
+		try {
+			 d=dateFormat.parse(pickup_date);
+			 t=timeFormat.parse(pickup_time);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		cqs.check(d);
+		
 		HttpSession s=request.getSession();
 		String email=s.getAttribute("email").toString();
-		us.sendmail(email, "CONFIRM");
+		System.out.println("email to:"+email);
+		
+		//us.sendmail(email, "CONFIRM");
 		
 	}
 	

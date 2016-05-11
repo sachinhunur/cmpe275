@@ -58,7 +58,7 @@ body {
     <form align:"center" role="form" method="POST" action="getprofilehtml.html">
         <div class="form-group">
             <label for="inputEmail">Email</label>
-            <input type="text" class="form-control resize" id="inputEmail" name="id" placeholder="Email">
+            <input type="text" class="form-control resize" id="inputEmail" name="email" placeholder="Email">
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>

@@ -31,6 +31,8 @@
         <url-pattern>/deactivate.html</url-pattern>
         <url-pattern>/editMenu.html</url-pattern>
          <url-pattern>/update.html</url-pattern>
+        <url-pattern>/resetMenu.html</url-pattern>
+        <url-pattern>/setMenu.html</url-pattern>
     </servlet-mapping>
   
     

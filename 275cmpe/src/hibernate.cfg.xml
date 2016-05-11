@@ -26,6 +26,7 @@
  		<mapping class="com.project.model.Order_details"/>
  		<mapping class="com.project.model.Menu"/>
  		<mapping class="com.project.model.Menu_temp"/>
+ 		<mapping class="com.project.model.CookQueue"/>
  		
 
 </session-factory>

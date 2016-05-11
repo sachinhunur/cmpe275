@@ -135,4 +135,14 @@ Name: <input class="form-control" type="text" name="id" required>
 	   
 
 </form>
-</body></html>
+<form action="resetMenu.html" method="POST">
+	<input type="submit" name="reset" value="RESET">
+</form>
+
+
+<form action="setMenu.html" method="POST">
+	<input type="submit"  value="insert">
+</form>
+
+</body>
+</html>
