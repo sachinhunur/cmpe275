@@ -43,17 +43,17 @@
     <div id="header" style="background-color:#dc0e28;" align="left" class="container-fluid">
 
 
-            <p align="center" style="font-weight:bold;color:#000;font-size:40px">Online Restro</p>
+            <p align="center" style="font-weight:bold;color:#000;font-size:40px">Food-To-Go</p>
 
     </div>
 
 </header>
 
 <div id="secondSection" align="center">
-    <img src="https://hawksworthrestaurant.com/wp-content/uploads/2013/06/Hawksworth-Restaurant-Squid-Ceviche-home.jpg" width="100%" height="400">
+    <img src="https://hawksworthrestaurant.com/wp-content/uploads/2013/06/Hawksworth-Restaurant-Squid-Ceviche-home.jpg" width="100%" height="350">
 </div>
 
- <div class="row container-fluid" style="margin-top:350px">
+ <div class="row container-fluid" style="margin-top:300px">
     <div id="leftSection" class="col-md-4"></div>
       <div name="middleSection" class="col-md-4">
         <h3 style="color: #7ddc27;" align="center">User Login</h3>

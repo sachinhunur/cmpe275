@@ -9,89 +9,89 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 <style type="text/css">
  img{
 
     width: 100px;
     height:100px;
   }
+  
+        #header {
+            height: 60px;
+            margin: 0px
+        }
+        #secondSection {
+            height: 50px;
+        }
+        .background {
+            -webkit-filter: blur(10px);
+            filter: blur(10px);
+        }
+        .container {
+            font-weight: bold;
+            font-family: Calibri;
+            font-size: x-large;
 
+        }
 </style>
+
 
 <script type="text/javascript">
 
-// onclick="document.getElementById('quantity')+' '+${menu.item_name}" value="document.getElementById('quantity')'+'${menu.item_name}"
 
-
-/* $(document).ready(function(){
-	alert("inside ready");
-	var x=document.getElementById("quantity").value;
-	alert("x:"+x);
-    $("#checkbox4").click(function(){
-    	alert("inside check");
-        $(this).value=($(this).val()).append(x);
-    });
-}); */
-function getValue4()
-{
-	alert("inside getValue4:");
-	if(document.getElementById("checkbox4").checked){
-		var x=document.getElementById("quantity4").value;
-		alert("x:"+x);
-		document.getElementById("checkbox4").value=document.getElementById("checkbox4").value+x;
-		alert("value is:"+document.getElementById("checkbox4").value);
-		}
-}
-function getValue1()
-{
-	alert("inside getValue");
-	if(document.getElementById('checkbox1').checked){
-	var x=document.getElementById("quantity1").value;
-	alert("x:"+x);
-	document.getElementById("checkbox1").value=document.getElementById("checkbox1").value+x;
-	alert("value is:"+document.getElementById("checkbox1").value);
-	}
-}
-
-function getValue3()
-{
-	alert("inside getValue");
-	if(document.getElementById('checkbox3').checked){
-	var x=document.getElementById("quantity3").value;
-	alert("x:"+x);
-	document.getElementById("checkbox3").value=document.getElementById("checkbox3").value+x;
-	alert("value is:"+document.getElementById("checkbox3").value);
-	}
-}
-
+var arr=[];
+var temp;
 
 function getValue(id1)
 {
-	alert("id1:"+id1);
-	if(id1.checked)
+	//alert("id1:"+id1);
+	if(document.getElementById(id1+'_c').checked)
 	{
-		alert("value is:"+document.getElementById("anuja").value);	
+		//alert("value is:"+document.getElementById(id1).value);	
+		temp=document.getElementById(id1).value+"-"+id1;
+		arr.push(temp);
+		//alert(arr);
 	}
 	else
 	{
-		alert("no id");	
+		//alert("no id");	
 	}
+	
+}
+
+function getArray()
+{
+	//alert("inside getArray");
+	document.getElementById('myField').value=arr;
+	//alert("arr is:"+document.getElementById('myField').value);
+	
 }
 
 </script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.add').click(function() {
-        	alert("insde ");
-        	$(this).val( $(this).closest('tr').find('.quantity').val());
-           alert($(this).val);
-        });
-    });
-</script>
+
   
 </head>
-<body>
+
+<body style="background-color:black">
+<header>
+<!-- background-color:#dc0e28 -->
+    <div id="header" style="background-color: #dc0e28;" align="left" class="container-fluid">
+        <p align="center" style="font-weight:bold;color:#000;font-size:40px">Food-To-Go</p>
+        <form role="form" action="logout.html" method="POST">
+        <ul class="nav navbar-nav navbar-right">
+            <!--<form role="form" method="POST" action="logout.html" >
+                <input type="submit" class=" form-control" style="background-color: #459cdc; color:white; font-size: medium;" value="Logout" />
+            </form>-->
+            <li><h3 align="center" style="color:greenyellow" ><%= session.getAttribute("email") %></h3></li>
+            <li><input type="submit" align="right" style="font-size: 30px" value="Logout" /></li>
+
+        </ul>
+        </form>
+    </div>
+ </header>
+
+
 <form role="form" action="receive_order.html" method="POST">
 
 <div class="container">
@@ -101,106 +101,119 @@ function getValue(id1)
   <li><a href="#tab_c" data-toggle="pill">Main Course</a></li>
   <li><a href="#tab_d" data-toggle="pill">Dessert</a></li>
 </ul>
-<h2><%= session.getAttribute("email") %></h2>
+
 
 <div class="tab-content col-md-8">
 		
         <div class="tab-pane active" id="tab_a">
-             <h4 text-align="center">Drink</h4>
-   
-			<table>
+           <!--   <h2 text-align="center">Drink</h2> -->
+			<table class="table table-sm">
+			<thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
 		        <th>Quantity</th>
-		        <th>Order</th>
 		        
 		    </tr>
-		    <c:forEach items="${drinks}" var="menu" varStatus="status">
+		    </thead>
+		    <tbody style="color:#66ccff">
+		     <c:forEach items="${drinks}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		            <td><input type="number" name="menus" id="quantity1" min=1 max=100 placeholder="1"></input></td>
-		            <td><input type="checkbox" id="checkbox1" value="${menu.item_name}" name="menus"
-		            /></td>
+		            <td><input type="number" name="menus" id="${menu.item_name}" min=1 max=100 placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
-		    </c:forEach>
+		    </c:forEach> 
+		    </tbody>
 			</table>
 			
 			
         </div>
         <div class="tab-pane" id="tab_b">
-             <h4>Appetizer</h4>
-            <table>
+            <!--  <h4>Appetizer</h4> -->
+            <table class="table table-sm" >
+            <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${appetizers}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus" min=1 max=100 placeholder="1"></input></td>
-		            <td><input type="checkbox" id="${menu.item_name}" value="${menu.item_name}" name="menus" onchange="getValue2()"/></td>
+		             <td><input type="number" id="${menu.item_name}" name="menus" min=1 max=100 ng-model="${menu.quantity}" placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
         <div class="tab-pane" id="tab_c">
-             <h4>Main Course</h4>
-            <table>
+          <!--    <h4>Main Course</h4> -->
+            <table class="table table-sm">
+            <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${main_courses}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" id="quantity" name="menus" min=1 max=100 placeholder="1"></input></td>
-		            <td><input type="checkbox" id="checkbox3" value="${menu.item_name}" name="menus" /></td>
+		             <td><input type="number" id="${menu.item_name}" name="menus" min=1 max=100 placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
         <div class="tab-pane" id="tab_d">
-             <h4>Dessert</h4>
-         <table>
+             <!-- <h4>Dessert</h4> -->
+         <table class="table table-sm">
+         <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${desserts}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus" id="quantity"  min=1 max=100  placeholder="1"></input></td>
-		            <td><input  type="checkbox"  value="${menu.item_name}" name="menus" /></td> <!-- onclick="getValue(this.id)"/></td> -->
+		             <td><input type="number" name="menus" id="${menu.item_name}"  min=1 max=100  placeholder="1" value=1></input></td>
+		            <td><input  type="checkbox"  id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td> <!-- onclick="getValue(this.id)"/></td> -->
 		        	
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
         
@@ -209,13 +222,16 @@ function getValue(id1)
 </div><!-- tab content -->
  
 </div>
-<input type="submit" name="submit_order" value="Place order"/>
-
+	 <div align="center" style="margin-top: 50px">
+	<input type="hidden" id="myField" value="" name="array" />
+	 <input  class="btn btn-info btn-lg" type="submit" style="background-color: #459cdc; color:white; font-size: medium;" name="submit_order" value="Place order" onclick="getArray()"/>
+	<!-- <input type="submit" name="submit_order" value="Place order" id="place_order" onclick="getArray()"/> -->
+	</div>
 </form>
-<h2>${success}</h2>
+<%-- <h2>${success}</h2>
 <form role="form" method="POST" action="logout.html" >
 	<input type="submit" name="logout" value="LOGOUT" />
-</form>
+</form> --%>
 
 
 </body>

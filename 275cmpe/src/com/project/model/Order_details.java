@@ -46,6 +46,20 @@ public class Order_details {
 	public void setQty(String qty) {
 		this.qty = qty;
 	}
+	private String status = new String();
+	public String getStatus() {
+		return qty;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	private String userId = new String();
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String id) {
+		this.userId = id;
+	}
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Range(min=0)
 	private int order_id;
@@ -56,12 +70,20 @@ public class Order_details {
 		this.order_id = order_id;
 	}
 //	@Temporal(TemporalType.TIMESTAMP)
-	private Date orderTime; 
-	public Date getOrderTime() {
-		return this.orderTime;
+	private String pickTime; 
+	public String getPickTime() {
+		return this.pickTime;
 	}
-	public void setOrderTime(Date orderTime) {
-		this.orderTime = orderTime;
+	public void setOrderTime(String pickTime) {
+		this.pickTime = pickTime;
+	}
+	
+	private String pickDate; 
+	public String getPickDate() {
+		return this.pickDate;
+	}
+	public void setOrderDate(String pickDate) {
+		this.pickDate = pickDate;
 	}
 /*//	@Temporal(TemporalType.DATE)
 	private Date orderDate;
@@ -79,11 +101,11 @@ public class Order_details {
 	public void setCook(int cook) {
 		this.cook = cook;
 	}
-	private Float price;
-	public Float getPrice() {
+	private String price;
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 }

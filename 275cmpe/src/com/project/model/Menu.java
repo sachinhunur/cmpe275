@@ -33,10 +33,19 @@ public class Menu {
 	@Range(min=0, max=999)
 	private int menu_id;
 	private String menu_status;
+	//@Column(unique=true)
 	private String item_name;
 	private String unitPrice;//eg:$5.5
 	//@Enumerated(EnumType.STRING)
     private String category;
+    private String quantity;
+    
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
 	public String getCategory() {
 		return category;
 	}

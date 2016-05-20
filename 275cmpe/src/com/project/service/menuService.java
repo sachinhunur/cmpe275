@@ -26,7 +26,7 @@ public class menuService {
 		
 	
 		@Transactional
-		public void addMenu(String itemName,String price,String category,String status,int prepTime,int calories,MultipartFile image)
+		public void addMenu(String itemName,String price,String category,String status,int prepTime,int calories,MultipartFile image, String q)
 		{
 			/*byte[] bFile = new byte[(int) image.length()];
 			System.out.println("hereeeeeee"+bFile);
@@ -50,6 +50,7 @@ public class menuService {
 			menu.setUnitPrice(price);
 			
 				menu.setImage(image.getBytes());
+				menu.setQuantity(q);
 				menuData.addMenu(menu);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -90,7 +91,7 @@ public class menuService {
 		
 		@Transactional
 		public void updateMenu(int id,String itemName, String price, String category, String status, int prepTime,
-				int calories, byte[] bs) {
+				int calories, byte[] bs, String q) {
 			menu.setMenu_id(id);
 			menu.setCalories(calories);
 			menu.setCategory(category);
@@ -99,6 +100,7 @@ public class menuService {
 			menu.setMenu_status(status);
 			menu.setPreparation_time(prepTime);
 			menu.setUnitPrice(price);
+			menu.setQuantity(q);
 			
 				menu.setImage(bs);
 				menuData.updateMenu(menu);

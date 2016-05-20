@@ -47,6 +47,8 @@
 	       <url-pattern>/logout.html</url-pattern>
 	       <url-pattern>/signup2.html</url-pattern>
 	       <url-pattern>/confirmOrder.html</url-pattern>
+	        <url-pattern>/showOrder.html</url-pattern>
+	        <url-pattern>/cancelOrder.html</url-pattern>
     </servlet-mapping>
      
   

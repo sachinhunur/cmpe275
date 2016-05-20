@@ -64,11 +64,17 @@ public class controller {
 	public String addMenu(@RequestParam("itemName") String itemName,@RequestParam("price") String price,@RequestParam("category") String category,@RequestParam("calories") int calories,@RequestParam("time") int prepTime,@RequestParam("status") String status,@RequestParam("pic") MultipartFile image,ModelMap model) {
 		
 		
-		menuService.addMenu(itemName,price,category,status,prepTime,calories,image);
+		menuService.addMenu(itemName,price,category,status,prepTime,calories,image,"1");
 		Menu menu=menuService.getMenu(itemName);
 		byte [] b=menu.getImage();
 		 try{
-	            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+	         //for local 
+			 FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+			 //opt/tomcat/webapps/275cmpe/images
+			 //for shikha's
+	           // FileOutputStream fos = new FileOutputStream("opt/tomcat/webapps/275cmpe/images"+menu.getMenu_id()+".jpg");
+	           //for sindhu's 
+	           // FileOutputStream fos = new FileOutputStream("home/ubuntu/apache-tomcat-8.0.33/apache-tomcat-8.0.33/webapps/images"+menu.getMenu_id()+".jpg");
 	            fos.write(b);
 	            fos.close();
 	        }catch(Exception e){
@@ -113,8 +119,13 @@ public class controller {
 		model.addAttribute("status", menu.getMenu_status());
 		byte [] b=menu.getImage();
 		 try{
-	            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
-	            fos.write(b);
+			 //for local
+	           FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
+			 //for shikha's
+			// FileOutputStream fos = new FileOutputStream("opt/tomcat/webapps/275cmpe/images"+menu.getMenu_id()+".jpg");
+			 //for sindhus
+			 //FileOutputStream fos = new FileOutputStream("home/ubuntu/apache-tomcat-8.0.33/apache-tomcat-8.0.33/webapps/images"+menu.getMenu_id()+".jpg");
+			 	fos.write(b);
 	            
 	            fos.close();
 	        }catch(Exception e){
@@ -134,18 +145,28 @@ public class controller {
 			if(image.getSize() == 0)
 			 {
 				 Menu menu=menuService.editMenu(id);
-				 menuService.updateMenu(id,itemName,price,category,status,prepTime,calories,menu.getImage());
+				 menuService.updateMenu(id,itemName,price,category,status,prepTime,calories,menu.getImage(),"1");
 			 } else
 				{
 		
-				 menuService.updateMenu(id,itemName,price,category,status,prepTime,calories,image.getBytes());
+				 menuService.updateMenu(id,itemName,price,category,status,prepTime,calories,image.getBytes(),"1");
 				}
 			 Menu menu=menuService.getMenu(itemName);
-			 File file=new File("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
+			//for local
+			File file=new File("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
+			 //for shikha's
+			 //File file=new File("/opt/tomcat/webapps/275cmpe/images"+menu.getMenu_id()+".jpg");
+			 //for sindhu's
+			// File file=new File("home/ubuntu/apache-tomcat-8.0.33/apache-tomcat-8.0.33/webapps/images"+menu.getMenu_id()+".jpg");
 			 file.delete();
 			 byte [] b=menu.getImage();
 			 try{
-		            FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg"); 
+				 //for local
+		           FileOutputStream fos = new FileOutputStream("C:/Users/Anuja Asalkar/Downloads/275cmpe/275cmpe/275cmpe/WebContent/images/"+menu.getMenu_id()+".jpg");
+		         //for shikhas  
+				// FileOutputStream fos = new FileOutputStream("opt/tomcat/webapps/275cmpe/images"+menu.getMenu_id()+".jpg");
+		         //for sindhus   
+				// FileOutputStream fos = new FileOutputStream("home/ubuntu/apache-tomcat-8.0.33/apache-tomcat-8.0.33/webapps/images"+menu.getMenu_id()+".jpg");
 		            fos.write(b);
 		            
 		            fos.close();
