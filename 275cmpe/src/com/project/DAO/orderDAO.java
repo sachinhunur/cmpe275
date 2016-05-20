@@ -93,9 +93,7 @@ import com.project.model.User;
 			sessionFactory.close();
 		}
 
-	
-
-		public int getLastOrderId() {
+	public int getLastOrderId() {
 			System.out.println("inside getLast order:");
 			//sessionFactory.getCurrentSession().save(user);
 			SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
@@ -139,5 +137,9 @@ import com.project.model.User;
 			sessionFactory.close();
 			
 		}
+
+		
+		
+
 
 }

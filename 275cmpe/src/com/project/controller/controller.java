@@ -7,7 +7,9 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.model.Category;
 import com.project.model.CookQueue;
 import com.project.model.Menu;
+import com.project.model.Order_details;
 import com.project.model.User;
 import com.project.service.menuService;
 import com.project.service.CookQueueService;
@@ -215,5 +218,35 @@ public class controller {
 			
 			
 			cqs.addNewCook(cq);
+		}
+		
+		
+		//ORDER HISTORYYYYYYYYYYYYYYYY
+		@RequestMapping(value="/orderHistory.html",method=RequestMethod.POST)
+		public ModelAndView orderHistory()
+		{
+			ModelAndView model=new ModelAndView();
+			System.out.println("inside order history");
+			menuService ms=new menuService();
+			
+			ArrayList<Order_details> od= ms.getHistory();
+			List <Order_details> frontList=new ArrayList<Order_details>();
+			for(Order_details o : od)
+			{
+				Order_details test= new Order_details();
+				test.setOrder_id(o.getOrder_id());
+				test.setOrderDate(o.getPickDate());
+				test.setOrderTime(o.getPickTime());
+				test.setStatus(o.getStatus().toString());
+				test.setUserId(o.getUserId().toString());
+				System.out.println(o);
+				frontList.add(test);
+			}
+			
+			model.addObject("orderHistory",frontList);
+			model.setViewName("orderHistory");
+			return model;
+			
+		
 		}
   }

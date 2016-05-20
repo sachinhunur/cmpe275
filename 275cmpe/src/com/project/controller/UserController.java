@@ -96,7 +96,7 @@ public class UserController {
 			}
 				
 		}
-		
+
 	//User Logout
 	
 		@RequestMapping(value="/logout",method=RequestMethod.POST )
@@ -119,7 +119,9 @@ public class UserController {
 		return "signupUser";
 	}
 
+
 	//Render Login page
+
 		@RequestMapping(value="/renderLogin", method=RequestMethod.GET)
 		public String showLogin()
 		{
@@ -298,6 +300,9 @@ public class UserController {
 			System.out.println("back from earliest");
 			System.out.println(s);
 			model.addAttribute("early",s);
+
+			model.addAttribute("date",dateFormat.format(date));
+
 			return new ModelAndView("confirmOrder");
 		
 		/*else
@@ -309,7 +314,9 @@ public class UserController {
 	
 	//on confirming order
 	@RequestMapping(value="/confirmOrder.html",method=RequestMethod.POST)
-	public ModelAndView sendConfirmEmail(HttpServletRequest request, HttpServletResponse response, ModelMap model1)
+
+	public ModelAndView sendConfirmEmail(HttpServletRequest request, HttpServletResponse response, ModelMap model1) throws ParseException
+
 	{
 		//UserService us=new UserService();
 		ModelAndView model=new ModelAndView();

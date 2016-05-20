@@ -48,7 +48,9 @@ public class Order_details {
 	}
 	private String status = new String();
 	public String getStatus() {
-		return qty;
+
+		return status;
+
 	}
 	public void setStatus(String status) {
 		this.status = status;
@@ -70,14 +72,25 @@ public class Order_details {
 		this.order_id = order_id;
 	}
 //	@Temporal(TemporalType.TIMESTAMP)
-	private String pickTime; 
-	public String getPickTime() {
+
+
+	
+
+	@Temporal(TemporalType.TIME)
+	private Date pickTime; 
+	public Date getPickTime() {
+
 		return this.pickTime;
 	}
-	public void setOrderTime(String pickTime) {
+
+
+	
+
+	public void setOrderTime(Date pickTime) {
 		this.pickTime = pickTime;
 	}
-	
+	//@Temporal(TemporalType.TIME)
+
 	private String pickDate; 
 	public String getPickDate() {
 		return this.pickDate;
@@ -92,7 +105,7 @@ public class Order_details {
 //	@Temporal(TemporalType.TIMESTAMP)
 	private Date startTime;
 //	@Temporal(TemporalType.TIMESTAMP)*/
-	private Date endTime;
+	//private Date endTime;
 	private int cook;
 	
 	public int getCook() {
@@ -108,4 +121,29 @@ public class Order_details {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	
+	public Date getStart_time() {
+		return start_time;
+	}
+	public void setStart_time(Date start_time) {
+		this.start_time = start_time;
+	}
+	public Date getEnd_time() {
+		return end_time;
+	}
+	public void setEnd_time(Date end_time) {
+		this.end_time = end_time;
+	}
+	public int getCook_id() {
+		return cook_id;
+	}
+	public void setCook_id(int cook_id) {
+		this.cook_id = cook_id;
+	}
+	@Temporal(TemporalType.TIME)
+	private Date start_time;
+	@Temporal(TemporalType.TIME)
+	private Date end_time;
+	private int cook_id;
+	
 }

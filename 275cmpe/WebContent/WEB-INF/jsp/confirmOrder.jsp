@@ -76,6 +76,7 @@ document.getElementById("current_date").innerHTML = d.toDateInputValue(); */
      </form>
      
       <form role="form" action="confirmOrder.html" method="POST">
+<<<<<<< Upstream, based on origin/master
      <h3 style="color:#459cdc;" >Earliest Pick Up Date: <input type="date" name="pickup_date" value="2016-05-11" readonly="readonly"/></h3>
     <h3 style="color:#459cdc;" >Earliest Pick Up Time: <input type="text"  class="form-control" name="pickup_time" value="${early}" readonly="readonly"/></h3>
       <button type="submit" class="btn btn-info btn-lg">ORDER NOW!!!!!</button>
@@ -83,5 +84,12 @@ document.getElementById("current_date").innerHTML = d.toDateInputValue(); */
      <h3 style="color:#459cdc;">Note:<input type="text"  class="form-control" name="pickup_time" value="${msg}" readonly="readonly"/></h3>
 	
 
+=======
+     <h3 style="color:#459cdc;" >Earliest Pick Up Date: <input type="date" name="pickup_date" value="${date}" readonly="readonly"/></h3>
+    <h3 style="color:#459cdc;" >Earliest Pick Up Time: <input type="text"  class="form-control" name="pickup_time" value="${early}" readonly="readonly"/></h3>
+      <button type="submit" class="btn btn-info btn-lg">ORDER NOW!!!!!</button>
+     </form>
+     <h3 style="color:#459cdc;">Note:<input type="text"  class="form-control" name="pickup_time" value="${msg}" readonly="readonly"/></h3>
+>>>>>>> c138903 order history and schedular task
 </body>
 </html>

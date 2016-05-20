@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -16,6 +19,7 @@ import com.project.DAO.menuDAO;
 import com.project.model.Category;
 import com.project.model.Menu;
 import com.project.model.Menu_temp;
+import com.project.model.Order_details;
 
 public class menuService {
 
@@ -117,6 +121,19 @@ public class menuService {
 		public void resetMenu()
 		{
 			menuData.resetMenu();
+		}
+
+		public ArrayList<Order_details> getHistory() {
+			// TODO Auto-generated method stub
+			menuDAO m=new menuDAO();
+			return m.getHistory();
+		}
+
+		//UPDATE PLACED ORDER STATUS
+		public void updateStatus() throws ParseException{
+			// TODO Auto-generated method stub
+			menuDAO m= new menuDAO();
+			m.updateStatus();
 		}
 		
 }

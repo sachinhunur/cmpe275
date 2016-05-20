@@ -1,7 +1,9 @@
 package com.project.DAO;
 
+import com.project.model.CookQueue;
 import com.project.model.Menu;
 import com.project.model.Menu_temp;
+import com.project.model.Order_details;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
@@ -11,6 +13,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -211,6 +218,73 @@ public class menuDAO {
 			addMenu(m2);
 			addMenu(m3);	
 		}
+//GET ORDER HISTORY FOR ALL USERS
+		public ArrayList<Order_details> getHistory() {
+			// TODO Auto-generated method stub
+			@SuppressWarnings("deprecation")
+			SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
+			Session session=sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Order_details.class);
+			@SuppressWarnings("unchecked")
+			ArrayList<Order_details> cq=(ArrayList<Order_details>)criteria.list();
+			session.getTransaction().commit();
+			session.close();
+			sessionFactory.close();
+			return cq;
+		}
+
+		public void updateStatus() throws ParseException {
+			// TODO Auto-generated method stub
+			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat form= new SimpleDateFormat("HH:mm");
+			Calendar cal= Calendar.getInstance();
+			
+			System.out.println("data"+" "+"time"+form.format(new Date()));
+			
+			
+			SessionFactory sessionFactory=new AnnotationConfiguration().configure().buildSessionFactory();
+			Session session=sessionFactory.openSession();
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Order_details.class);
+			criteria.add(Restrictions.eq("pickDate", formatter.format(new Date())));
+			ArrayList<Order_details> cq=(ArrayList<Order_details>)criteria.list();
+			String now;
+			try {
+				now=form.format(new Date());
+			
+			for(Order_details o : cq)
+			{
+				System.out.println(now);
+				if((now.compareTo(o.getStart_time().toString()) >0) && (o.getEnd_time().toString().compareTo(now)>0))
+				{
+					System.out.println("progree");
+					o.setStatus("In Progress");
+					session.save(o);
+				}
+				else if ((now.compareTo(o.getEnd_time().toString())>0) && (o.getPickTime().toString().compareTo(now)>0))
+				{
+					System.out.println("prepared");
+					o.setStatus("Prepared");
+				}
+				else if(now.compareTo(o.getPickTime().toString())>0)
+				{
+					System.out.println("delived");
+					o.setStatus("Delivered");
+					session.save(o);
+				}
+			}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			session.getTransaction().commit();
+			session.close();
+			sessionFactory.close();
+		}
+
+		
 		
 		
 }

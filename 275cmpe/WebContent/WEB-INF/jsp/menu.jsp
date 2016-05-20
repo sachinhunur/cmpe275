@@ -228,10 +228,16 @@ function getArray()
 	<!-- <input type="submit" name="submit_order" value="Place order" id="place_order" onclick="getArray()"/> -->
 	</div>
 </form>
+<<<<<<< Upstream, based on origin/master
 <%-- <h2>${success}</h2>
 <form role="form" method="POST" action="logout.html" >
 	<input type="submit" name="logout" value="LOGOUT" />
 </form> --%>
+=======
+
+
+
+>>>>>>> c138903 order history and schedular task
 
 
 </body>
