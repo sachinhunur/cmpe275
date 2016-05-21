@@ -25,6 +25,11 @@
  		<mapping class="com.project.model.User"/>
  		<mapping class="com.project.model.Order_details"/>
  		<mapping class="com.project.model.Menu"/>
+<<<<<<< HEAD
+=======
+ 		<mapping class="com.project.model.Menu_temp"/>
+ 		<mapping class="com.project.model.CookQueue"/>
+>>>>>>> origin/master
  		
 
 </session-factory>
