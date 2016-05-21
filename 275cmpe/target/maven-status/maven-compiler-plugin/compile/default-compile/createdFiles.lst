@@ -1,24 +1,19 @@
-<<<<<<< HEAD
-com\project\service\menuService.class
-com\project\controller\controller.class
-com\project\service\UserService.class
-com\project\model\User.class
-com\project\model\Order_details.class
-com\project\DAO\menuDAO.class
-com\project\DAO\UserDAO.class
-=======
 com\project\controller\controller.class
 com\project\DAO\orderDAO.class
 com\project\DAO\MenuTempDAO.class
 com\project\service\UserService.class
 com\project\model\Order_details.class
 com\project\DAO\menuDAO.class
+com\project\controller\MyBean.class
+com\project\model\Menu_Ordered.class
 com\project\DAO\UserDAO.class
 com\project\model\Menu_temp.class
+com\project\service\CookQueueService.class
 com\project\service\menuService.class
 com\project\service\MenuTempService.class
+com\project\model\CookQueue.class
+com\project\DAO\CookQueueDAO.class
 com\project\model\User.class
 com\project\controller\UserController.class
->>>>>>> origin/master
 com\project\model\Category.class
 com\project\model\Menu.class

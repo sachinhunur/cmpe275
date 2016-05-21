@@ -1,10 +1,7 @@
 package com.project.model;
 
 import java.io.InputStream;
-<<<<<<< HEAD
-=======
 import java.util.Arrays;
->>>>>>> origin/master
 import java.util.Currency;
 
 import javax.persistence.Column;
@@ -36,16 +33,11 @@ public class Menu {
 	@Range(min=0, max=999)
 	private int menu_id;
 	private String menu_status;
-<<<<<<< HEAD
-=======
 	//@Column(unique=true)
->>>>>>> origin/master
 	private String item_name;
 	private String unitPrice;//eg:$5.5
 	//@Enumerated(EnumType.STRING)
     private String category;
-<<<<<<< HEAD
-=======
     private String quantity;
     
 	public String getQuantity() {
@@ -54,7 +46,6 @@ public class Menu {
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
->>>>>>> origin/master
 	public String getCategory() {
 		return category;
 	}
@@ -115,8 +106,6 @@ public class Menu {
 	public void setPreparation_time(int preparation_time) {
 		this.preparation_time = preparation_time;
 	}
-<<<<<<< HEAD
-=======
 	@Override
 	public String toString() {
 		return "Menu [order1=" + order1 + ", menu_id=" + menu_id + ", menu_status=" + menu_status + ", item_name="
@@ -127,5 +116,4 @@ public class Menu {
 	
 	
 	
->>>>>>> origin/master
 }

@@ -5,6 +5,24 @@ Group10
 </title>
 </head>
 <body>
+
+<header>
+    <div id="header" style="background-color:#dc0e28;" align="left" class="container-fluid">
+
+        <nav>
+            <p align="center" style="font-weight:bold;color:#000;font-size:40px">Food-To-Go</p>
+
+        </nav>
+
+    </div>
+
+</header>
+<div id="secondSection" align="center">
+    <img src="https://hawksworthrestaurant.com/wp-content/uploads/2013/06/Hawksworth-Restaurant-Squid-Ceviche-home.jpg" width="100%" height="350">
+</div>
+
+
+
 	<form method="POST" action="update.html" role="form" enctype="multipart/form-data">
 	<div class="form-group">
    <table>

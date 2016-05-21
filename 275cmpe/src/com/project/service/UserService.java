@@ -1,22 +1,14 @@
 package com.project.service;
 
-<<<<<<< HEAD
-=======
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
->>>>>>> origin/master
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-
-import com.project.DAO.UserDAO;
-import com.project.model.User;
-=======
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.DAO.UserDAO;
@@ -25,7 +17,6 @@ import com.project.model.Order_details;
 import com.project.model.User;
 import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
->>>>>>> origin/master
 
 @Service
 public class UserService {
@@ -34,14 +25,6 @@ public class UserService {
 	UserDAO userDAO=new UserDAO();
 	
 	@Transactional
-<<<<<<< HEAD
-	public void addNewUser(User user)
-	{
-		System.out.println("in userservice:"+user);
-		try{
-		userDAO.addUser(user);
-		return;
-=======
 	public void addNewUser(User user)//String fname,String lname,String email, String password,String pno,Integer vcode)
 	{
 		System.out.println("in userservice:"+user);
@@ -55,15 +38,12 @@ public class UserService {
 			user.setEnabled(true);*/
 		userDAO.addUser(user);
 		//return;
->>>>>>> origin/master
 		}
 		catch (Exception e){
 			System.out.println("in exception");
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-=======
 	
 	public int userLogin(User user) {
 		int login = userDAO.searchUser(user);
@@ -136,7 +116,6 @@ public class UserService {
 	}
 	
 	//check user exists
->>>>>>> origin/master
 	public User getUser(User user)
 	{
 		User user1 = null;
@@ -151,10 +130,15 @@ public class UserService {
 		}
 		return user1;
 	}
+	public void addOrder(Order_details od)
+	{
+	System.out.println("inside addOrder:"+od);
+	orderDAO ord=new orderDAO();
+	ord.addOrder(od);
+	}
 
-<<<<<<< HEAD
-=======
-	public void addOrder(String email, String itemSet, String priceSet, String qtySet, String pickDate,
+
+	/*public void addOrder(String email, String itemSet, String priceSet, String qtySet, String pickDate,
 			String pickTime) throws ParseException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -170,7 +154,7 @@ public class UserService {
 		orderDAO ord=new orderDAO();
 		ord.addOrder(od);
 		
-	}
+	}*/
 	//for finding recent order id
 		public int findRecentOrderId() {
 			// TODO Auto-generated method stub
@@ -185,5 +169,4 @@ public class UserService {
 		
 	}
 
->>>>>>> origin/master
 }

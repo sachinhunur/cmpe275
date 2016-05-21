@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Menu;
+import com.project.model.Menu_Ordered;
 import com.project.model.Menu_temp;
+import com.project.model.Order_details;
 import com.project.model.User;
 import com.project.service.CookQueueService;
 import com.project.service.MenuTempService;
@@ -99,8 +101,8 @@ public class UserController {
 
 	//User Logout
 	
-		@RequestMapping(value="/logout",method=RequestMethod.POST )
-		public ModelAndView lout(HttpServletRequest request,HttpServletResponse response)
+		@RequestMapping(value="/lout",method=RequestMethod.POST )
+		public ModelAndView logout(HttpServletRequest request,HttpServletResponse response)
 		{
 			HttpSession s=request.getSession();
 			System.out.println("before invalidating :"+s.getAttribute("email"));
@@ -403,16 +405,49 @@ public class UserController {
 		model.addObject("pickTime", session.getAttribute("pickTime").toString());
 		model.addObject("orderList",frontList);
 		model.setViewName("showOrder");
+		//adding the Menu_Ordered 
+		List<Menu_Ordered> mo=new ArrayList<Menu_Ordered>();
+		
+		for(int i1=1;i1<menuItem.length;i1++)
+		{
+			Menu_Ordered m1=new Menu_Ordered();
+		m1.setMenu_name(menuItem[i1]);
+		m1.setQuantity(Integer.parseInt(menuQty[i1]));
+		mo.add(m1);
+		}
+
+		for(Menu_Ordered m:mo)
+		{
+		System.out.println("m:"+m);
+		}
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat form= new SimpleDateFormat("HH:mm");
+
+		Order_details od1=new Order_details();
+		od1.setMo(mo);
+		od1.setUserId(session.getAttribute("email").toString());
+
+		od1.setPickDate(session.getAttribute("pickDate").toString());
+		od1.setPickTime(form.parse(session.getAttribute("pickTime").toString()));
+		od1.setStatus("placed");
+
+		od1.setPrice(session.getAttribute("price").toString());
+		//od1.setCook_id(0);
+		//od1.setEnd_time(end_time);
+		//od1.setStart_time(start_time);
+
+		user.addOrder(od1);
 		//model.addAttribute("qtyList",menuQty.toString());
 		//model.addAttribute("priceList",menuPrice.toString());
 	//	System.out.println("menu each item"+session.getAttribute("menuList").toString());
 	//	System.out.println("qty each item"+session.getAttribute("qtyList").toString());
-		user.addOrder(session.getAttribute("email").toString(),session.getAttribute("item").toString(),session.getAttribute("price").toString(),session.getAttribute("quantity").toString(),session.getAttribute("pickDate").toString(),session.getAttribute("pickTime").toString() );
-		int order_id=user.findRecentOrderId();
-		System.out.println("Order_id is:"+order_id);
-		session.setAttribute("order_id", order_id);
+	//	user.addOrder(session.getAttribute("email").toString(),session.getAttribute("item").toString(),session.getAttribute("price").toString(),session.getAttribute("quantity").toString(),session.getAttribute("pickDate").toString(),session.getAttribute("pickTime").toString() );
+	//	int order_id=user.findRecentOrderId();
+		//System.out.println("Order_id is:"+order_id);
+		//session.setAttribute("order_id", order_id);
 		return  model;
-		//us.sendmail(email, "CONFIRM");
+		////us.sendmail(email, "CONFIRM");
 		
 	}
 	

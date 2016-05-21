@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-=======
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
@@ -63,7 +61,6 @@
 <!-- <!DOCTYPE html>
 <html>
 <head>
->>>>>>> origin/master
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -87,42 +84,6 @@ body {
     }
     
 </style>
-<<<<<<< HEAD
-<h1 align="center">LOGIN</h1>
-</head>
-<body>
-
-	<!-- <form align:"center" role="form" method="POST" action="getprofilehtml.html">
-	
-	<div>
-		<img alt="image" src="./images/party.jpg"></img>
-	</div>
-	
-	<div class="form-group">
-   <table>
-    <tr>
-        <td>ID: <input class="form-control" type="text" name="id" required></td>
-       
-    </tr>
-     <tr>
-        <td>Password: <input class="form-control" type="password" name="password" required></td>
-       
-    </tr>
-    <tr>
-        <td colspan="2">
-            <input class="btn btn-info btn-lg" data-toggle="modal" type="submit" value="Get profile as html"/>
-	   </td>
-    </tr>
-	</table>  
-</div>
-</form> -->
-
-<div class="bs-example" align="center">
-    <form align:"center" role="form" method="POST" action="getprofilehtml.html">
-        <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="text" class="form-control resize" id="inputEmail" name="id" placeholder="Email">
-=======
 
 </head>
 <body>
@@ -136,7 +97,6 @@ body {
         <div class="form-group">
             <label for="inputEmail">Email</label>
             <input type="text" class="form-control resize" id="inputEmail" name="email" placeholder="Email">
->>>>>>> origin/master
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
@@ -145,28 +105,6 @@ body {
       
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
-<<<<<<< HEAD
-</div>
-
-<div>
-<form role="form" method="post" action="sendemail.html">
-<button type="submit" class="btn btn-primary">Send Email</button>
-</form>
-</div>
-
-
-<div text-align="center">
-	<form align="center">
-	<h2>Don't have account?
-	<a  href="rendersignup.html" >Sign Up</a>
-	<!-- <form method="GET" action="usersignup.html">
-		<input type="submit" value="Sign Up"class="btn btn-primary"/>
-	</form> -->
-	</form>
-</div>
-</body>
-</html>
-=======
 </div> 
 
 <div>
@@ -199,4 +137,3 @@ body {
 </div>
 </body> 
 </html> -->
->>>>>>> origin/master

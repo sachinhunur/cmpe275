@@ -1,24 +1,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
-<<<<<<< HEAD
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-=======
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xmlns:task="http://www.springframework.org/schema/task"
->>>>>>> origin/master
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
-<<<<<<< HEAD
-        http://www.springframework.org/schema/context/spring-context.xsd">
- 
-     
-    
-	<context:component-scan base-package="com.project.controller" />
-
-=======
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
  
@@ -31,7 +19,6 @@
 </task:scheduled-tasks>
  
 <task:scheduler id="myScheduler"/>
->>>>>>> origin/master
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -40,8 +27,6 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-<<<<<<< HEAD
-=======
 	
 	<bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -53,6 +38,5 @@
  
     </bean>
 	
->>>>>>> origin/master
  
 </beans>

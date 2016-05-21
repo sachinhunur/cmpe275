@@ -8,18 +8,90 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 <style type="text/css">
  img{
 
     width: 100px;
     height:100px;
   }
+  
+        #header {
+            height: 60px;
+            margin: 0px
+        }
+        #secondSection {
+            height: 50px;
+        }
+        .background {
+            -webkit-filter: blur(10px);
+            filter: blur(10px);
+        }
+        .container {
+            font-weight: bold;
+            font-family: Calibri;
+            font-size: x-large;
 
+        }
 </style>
+
+
+<script type="text/javascript">
+
+
+var arr=[];
+var temp;
+
+function getValue(id1)
+{
+	//alert("id1:"+id1);
+	if(document.getElementById(id1+'_c').checked)
+	{
+		//alert("value is:"+document.getElementById(id1).value);	
+		temp=document.getElementById(id1).value+"-"+id1;
+		arr.push(temp);
+		//alert(arr);
+	}
+	else
+	{
+		//alert("no id");	
+	}
+	
+}
+
+function getArray()
+{
+	//alert("inside getArray");
+	document.getElementById('myField').value=arr;
+	//alert("arr is:"+document.getElementById('myField').value);
+	
+}
+
+</script>
+
   
 </head>
-<body>
+
+<body style="background-color:black">
+<header>
+<!-- background-color:#dc0e28 -->
+    <div id="header" style="background-color: #dc0e28;" align="left" class="container-fluid">
+        <p align="center" style="font-weight:bold;color:#000;font-size:40px">Food-To-Go</p>
+        <form role="form" action="logout.html" method="POST">
+        <ul class="nav navbar-nav navbar-right">
+            <!--<form role="form" method="POST" action="logout.html" >
+                <input type="submit" class=" form-control" style="background-color: #459cdc; color:white; font-size: medium;" value="Logout" />
+            </form>-->
+            <li><h3 align="center" style="color:greenyellow" ><%= session.getAttribute("email") %></h3></li>
+            <li><input type="submit" align="right" style="font-size: 30px" value="Logout" /></li>
+
+        </ul>
+        </form>
+    </div>
+ </header>
+
+
 <form role="form" action="receive_order.html" method="POST">
 
 <div class="container">
@@ -30,116 +102,142 @@
   <li><a href="#tab_d" data-toggle="pill">Dessert</a></li>
 </ul>
 
+
 <div class="tab-content col-md-8">
 		
         <div class="tab-pane active" id="tab_a">
-             <h4 text-align="center">Drink</h4>
-   
-			<table>
+           <!--   <h2 text-align="center">Drink</h2> -->
+			<table class="table table-sm">
+			<thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
 		        <th>Quantity</th>
-		        <th>Order</th>
 		        
 		    </tr>
-		    <c:forEach items="${drinks}" var="menu" varStatus="status">
+		    </thead>
+		    <tbody style="color:#66ccff">
+		     <c:forEach items="${drinks}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		            <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		            <td><input type="number" name="menus" id="${menu.item_name}" min=1 max=100 placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
-		    </c:forEach>
+		    </c:forEach> 
+		    </tbody>
 			</table>
-			<h2><%= session.getAttribute("email") %></h2>
-			<input type="text" value=<%= session.getAttribute("email") %> name="${session.email}" />
+			
+			
         </div>
         <div class="tab-pane" id="tab_b">
-             <h4>Appetizer</h4>
-            <table>
+            <!--  <h4>Appetizer</h4> -->
+            <table class="table table-sm" >
+            <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${appetizers}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		             <td><input type="number" id="${menu.item_name}" name="menus" min=1 max=100 ng-model="${menu.quantity}" placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
         <div class="tab-pane" id="tab_c">
-             <h4>Main Course</h4>
-            <table>
+          <!--    <h4>Main Course</h4> -->
+            <table class="table table-sm">
+            <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${main_courses}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		             <td><input type="number" id="${menu.item_name}" name="menus" min=1 max=100 placeholder="1" value=1></input></td>
+		            <td><input type="checkbox" id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td>
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
         <div class="tab-pane" id="tab_d">
-             <h4>Dessert</h4>
-         <table>
+             <!-- <h4>Dessert</h4> -->
+         <table class="table table-sm">
+         <thead style="color:#459cdc;">
 		    <tr>
 		        <th>Menu Name</th>
 		         <th>Calories</th>
 		        <th>Image</th>
 		         <th>Unit Price</th>
-		        <th>Checked</th>
+		        <th>Quantity</th>
 		        
 		    </tr>
+		    </thead>
+		    <tbody style="color:#66ccff">
 		    <c:forEach items="${desserts}" var="menu" varStatus="status">
 		        <tr>
 		            <td>${menu.item_name}</td>
 		            <td>${menu.calories}</td>
 		            <td><img src='./images/${menu.menu_id}.jpg'></img> </td>
 		            <td>${menu.unitPrice}</td>
-		             <td><input type="number" name="menus"></input></td>
-		            <td><input type="checkbox" value="${menu.item_name}" name="menus"/></td>
+		             <td><input type="number" name="menus" id="${menu.item_name}"  min=1 max=100  placeholder="1" value=1></input></td>
+		            <td><input  type="checkbox"  id="${menu.item_name}_c" value="${menu.item_name}" name="menus" onchange="getValue('${menu.item_name}')"/></td> <!-- onclick="getValue(this.id)"/></td> -->
+		        	
 		        </tr>
 		    </c:forEach>
+		    </tbody>
 			</table>
         </div>
+        
        
         
 </div><!-- tab content -->
  
 </div>
-<input type="submit" name="submit_order" value="Place order"/>
-
+	 <div align="center" style="margin-top: 50px">
+	<input type="hidden" id="myField" value="" name="array" />
+	 <input  class="btn btn-info btn-lg" type="submit" style="background-color: #459cdc; color:white; font-size: medium;" name="submit_order" value="Place order" onclick="getArray()"/>
+	<!-- <input type="submit" name="submit_order" value="Place order" id="place_order" onclick="getArray()"/> -->
+	</div>
 </form>
-<h2>${success}</h2>
+<<<<<<< Upstream, based on origin/master
+<%-- <h2>${success}</h2>
 <form role="form" method="POST" action="logout.html" >
 	<input type="submit" name="logout" value="LOGOUT" />
-</form>
+</form> --%>
+=======
+
+
+
+>>>>>>> c138903 order history and schedular task
 
 
 </body>

@@ -13,74 +13,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class User {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-<<<<<<< HEAD
-private int user_id;
-private String email;
-private boolean enabled; //this enabled field will be set to false. During the account verification process -if successful it will be set to true
-@Column(nullable=false)
-private String password;
-private int verification;
- public int getVerification() {
-	return verification;
-}
-public void setVerification(int verification) {
-	this.verification = verification;
-}
-// @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-//private Set<Order_details> order_details = new HashSet<Order_details>(0);//0 means the initial capacity
-public User()
-{
-	}
-public User(String username, String password, int verification) {
-	super();
-	this.email = username;
-	this.password = password;
-	this.verification = verification;
-}
-
-/*public Set<Order_details> getOrder_details() {
-	return order_details;
-}
-public void setOrder_details(Set<Order_details> order_details) {
-	this.order_details = order_details;
-}*/
-public String getPassword()
-{
-	return this.password;
-}
-
-public void setPassword(String password)
-{
-	this.password=password;
-}
-public String getEmail() {
-	return this.email;
-}
-public void setEmail(String username) {
-	this.email = username;
-}
-public boolean isEnabled() {
-	return this.enabled;
-}
-public void setEnabled(boolean enabled) {
-	this.enabled = enabled;
-}
-public int getUser_id()
-{
-	return user_id;
-}
-public void setUser_id(int user_id)
-{
-	this.user_id = user_id;
-}
-
-@Override
-public String toString() {
-	return "User [username=" + email + ", password=" + password + "]";
-}
-
-
-=======
 	private int user_id;
 	private String first_name;
 	private String last_name;
@@ -197,6 +129,5 @@ public String toString() {
 	
 	
 	
->>>>>>> origin/master
 
 }

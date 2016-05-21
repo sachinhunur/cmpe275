@@ -1,26 +1,19 @@
-<<<<<<< HEAD
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\DAO\UserDAO.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\DAO\menuDAO.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\controller\controller.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\model\User.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\model\Category.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\model\Order_details.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\model\Menu.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\service\UserService.java
-C:\Users\shikh\Documents\GitHub\CMPE275TeamProject--Takeout-Order-Management-System\cmpe275\275cmpe\src\com\project\service\menuService.java
-=======
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\model\User.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\service\UserService.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\service\MenuTempService.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\DAO\UserDAO.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\DAO\menuDAO.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\controller\controller.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\model\Category.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\model\Menu_temp.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\DAO\MenuTempDAO.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\DAO\orderDAO.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\model\Menu.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\model\Order_details.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\controller\UserController.java
-C:\Users\Anuja Asalkar\Downloads\275cmpe\275cmpe\275cmpe\src\com\project\service\menuService.java
->>>>>>> origin/master
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\controller\MyBean.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\Order_details.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\service\menuService.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\DAO\menuDAO.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\Menu_temp.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\DAO\orderDAO.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\Menu_Ordered.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\service\CookQueueService.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\DAO\MenuTempDAO.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\controller\controller.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\Menu.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\service\MenuTempService.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\CookQueue.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\controller\UserController.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\User.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\DAO\CookQueueDAO.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\DAO\UserDAO.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\model\Category.java
+C:\Users\shikh\git\cmpe275\275cmpe\src\com\project\service\UserService.java

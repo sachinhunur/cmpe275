@@ -32,25 +32,6 @@
 			<version>4.2.5.RELEASE</version>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
-	<groupId>javax.mail</groupId>
-	<artifactId>mail</artifactId>
-	<version>1.4</version>
-</dependency>
-<dependency>
-	<groupId>javax.activation</groupId>
-	<artifactId>activation</artifactId>
-	<version>1.1.1</version>
-</dependency>
-
-		<dependency>
-	<groupId>com.amazonaws</groupId>
-	<artifactId>aws-java-sdk</artifactId>
-	<version>1.3.27</version>
-</dependency>
-		<dependency>
-=======
->>>>>>> origin/master
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>4.2.5.RELEASE</version>
@@ -144,11 +125,6 @@
     <version>3.1.0</version>
     <scope>provided</scope>
 </dependency>	
-<<<<<<< HEAD
-
-
-	</dependencies>
-=======
 <dependency>
   <groupId>commons-fileupload</groupId>
   <artifactId>commons-fileupload</artifactId>
@@ -178,5 +154,4 @@
 		
   </dependencies>
 	
->>>>>>> origin/master
 </project>
