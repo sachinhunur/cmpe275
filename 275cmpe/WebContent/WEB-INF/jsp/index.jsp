@@ -68,6 +68,13 @@ body {
     </form>
 </div>
 
+<div>
+<form role="form" method="post" action="sendemail.html">
+<button type="submit" class="btn btn-primary">Send Email</button>
+</form>
+</div>
+
+
 <div text-align="center">
 	<form align="center">
 	<h2>Don't have account?

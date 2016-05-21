@@ -27,5 +27,19 @@ public class UserService {
 			e.printStackTrace();
 		}
 	}
+	public User getUser(User user)
+	{
+		User user1 = null;
+		System.out.println("in userservice:"+user);
+		try{
+		 user1=userDAO.getUser(user);
+		
+		}
+		catch (Exception e){
+			System.out.println("in exception");
+			e.printStackTrace();
+		}
+		return user1;
+	}
 
 }

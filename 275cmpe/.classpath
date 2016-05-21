@@ -17,5 +17,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/shikh/Downloads/javamail-1.4.3/javamail-1.4.3/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/shikh/Downloads/jaf-1_1_1/jaf-1.1.1/activation.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

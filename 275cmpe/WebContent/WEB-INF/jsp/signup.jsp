@@ -28,7 +28,7 @@ body {
 <h1>SIGN UP</h1>
 <body>
 <div class="bs-example" align="center">
-    <form align:"center" role="form" method="POST" action="signup.html">
+    <form align:"center" role="form" method="POST" action="sendemail.html">
         <div class="form-group">
             <label for="inputEmail">Email</label>
             <input type="email" class="form-control resize" id="inputEmail" name="email" placeholder="Email">

@@ -14,7 +14,13 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>controller</servlet-name>
-       <url-pattern>/</url-pattern>
+       <url-pattern>/getprofilehtml.html</url-pattern>
+      <url-pattern>/addMenu.html</url-pattern> 
+      <url-pattern>/rendersignup.html</url-pattern>
+      <url-pattern>/signup.html</url-pattern>
+      <url-pattern>/sendemail.html</url-pattern>
+      <url-pattern>/adduser.html</url-pattern>
+      <url-pattern>/verifyemail.html</url-pattern>
     </servlet-mapping>
   
 </web-app>
